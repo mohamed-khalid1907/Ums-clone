@@ -53,6 +53,21 @@ bullets[2].onclick = function () {
   bullets[2].classList.add("active");
   back.style.right = "240vw";
 };
+setInterval(function () {
+  if (back.style.right === "10vw") {
+    bullets.forEach((e) => e.classList.remove("active"));
+    bullets[1].classList.add("active");
+    back.style.right = "120vw";
+  } else if (back.style.right === "120vw") {
+    bullets.forEach((e) => e.classList.remove("active"));
+    bullets[2].classList.add("active");
+    back.style.right = "240vw";
+  } else {
+    bullets.forEach((e) => e.classList.remove("active"));
+    bullets[0].classList.add("active");
+    back.style.right = "10vw";
+  }
+}, 3000);
 let started = false;
 window.onscroll = function () {
   if (window.scrollY >= statsParent.offsetTop - 600) {
@@ -74,11 +89,10 @@ function counter(ele) {
 }
 function circle(ele) {
   let per = ele.dataset.num;
-    let x = 450;
-    ele.style.cssText = `
+  let x = 450;
+  ele.style.cssText = `
       stroke-dashoffset: ${450 - (per / 100) * 450};
     `;
-  };
-
+}
 
 //
